@@ -1,0 +1,99 @@
+<script>
+  // Prevent forms from submitting.
+  function preventFormSubmit() {
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].addEventListener('submit', function(event) {
+      event.preventDefault();
+      });
+    }
+  }
+  window.addEventListener("load", functionInit, true); 
+  
+  //INITIALIZE FUNCTIONS ONLOAD
+  function functionInit(){  
+    preventFormSubmit();
+    getLastTenRows();
+  };      
+  
+  //HANDLE FORM SUBMISSION
+  function handleFormSubmit(formObject) {
+    google.script.run.withSuccessHandler(createTable).processForm(formObject);
+    document.getElementById("myForm").reset();
+  }
+  
+  //GET LAST 10 ROWS
+  function getLastTenRows (){
+   google.script.run.withSuccessHandler(createTable).getLastTenRows();
+  }
+  
+  
+  //GET ALL DATA
+  function getAllData(){
+    //document.getElementById('dataTable').innerHTML = "";
+    google.script.run.withSuccessHandler(createTable).getAllData();
+  }
+  
+  
+  //CREATE THE DATA TABLE
+  function createTable(dataArray) {
+    if(dataArray){
+      var result = "<table class='table table-sm' style='font-size:0.8em'>"+
+                   "<thead style='white-space: nowrap'>"+
+                     "<tr>"+                               //Change table headings to match witht he Google Sheet
+                      "<th scope='col'>ลบ</th>"+
+                      "<th scope='col'>แก้ไข</th>"+
+                      "<th scope='col'>ไอดี</th>"+
+                      "<th scope='col'>เลขประจำตัว</th>"+
+                      "<th scope='col'>คำนำหน้า</th>"+
+                      "<th scope='col'>ชื่อ สกุล</th>"+
+                      "<th scope='col'>เพศ</th>"+
+                    "</tr>"+
+                  "</thead>";
+      for(var i=0; i<dataArray.length; i++) {
+          result += "<tr>";
+          result += "<td><button type='button' class='btn btn-danger btn-xs deleteBtn' onclick='deleteData(this);'>Delete</button></td>";  //Delete button
+          result += "<td><button type='button' class='btn btn-warning btn-xs editBtn' onclick='editData(this);'>Edit</button></td>";       //Edit button 
+          for(var j=0; j<dataArray[i].length; j++){
+              result += "<td>"+dataArray[i][j]+"</td>";
+          }
+          result += "</tr>";
+      }
+      result += "</table>";
+      var div = document.getElementById('dataTable');
+      div.innerHTML = result;
+      document.getElementById("message").innerHTML = "";
+    }else{
+      var div = document.getElementById('dataTable');
+      div.innerHTML = "ไม่พบข้อมูล!";
+    }
+  }
+
+  //DELETE DATA
+  function deleteData(el) {
+    var result = confirm("คุณต้องการจะลบข้อมูล?");
+    if (result) {
+      var recordId = el.parentNode.parentNode.cells[2].innerHTML;
+      google.script.run.withSuccessHandler(createTable).deleteData(recordId);
+    }
+  }
+  
+  
+  //EDIT DATA
+  function editData(el){
+    var recordId = el.parentNode.parentNode.cells[2].innerHTML; 
+    google.script.run.withSuccessHandler(populateForm).getRecordById(recordId);
+  }
+
+  //POPULATE FORM
+  function populateForm(records){
+    document.getElementById('RecId').value = records[0][0];
+    document.getElementById('ตัวแปรที่1').value = records[0][1];                       
+    document.getElementById('ตัวแปรที่2').value = records[0][2];
+    document.getElementById('ตัวแปรที่3').value = records[0][3];
+    document.getElementById(records[0][4] =='ชาย'? 'male':'female').checked = true;
+    
+    document.getElementById("message").innerHTML = "<div class='alert alert-warning' role='alert'>Update Record [ID: "+records[0][0]+"]</div>";
+  }
+    
+</script>
