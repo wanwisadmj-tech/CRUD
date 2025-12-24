@@ -45,7 +45,6 @@
                       "<th scope='col'>แก้ไข</th>"+
                       "<th scope='col'>ไอดี</th>"+
                       "<th scope='col'>เลขประจำตัว</th>"+
-                      "<th scope='col'>คำนำหน้า</th>"+
                       "<th scope='col'>ชื่อ สกุล</th>"+
                       "<th scope='col'>เพศ</th>"+
                     "</tr>"+
@@ -90,8 +89,7 @@
     document.getElementById('RecId').value = records[0][0];
     document.getElementById('ตัวแปรที่1').value = records[0][1];                       
     document.getElementById('ตัวแปรที่2').value = records[0][2];
-    document.getElementById('ตัวแปรที่3').value = records[0][3];
-    document.getElementById(records[0][4] =='ชาย'? 'male':'female').checked = true;
+    document.getElementById(records[0][3] =='ชาย'? 'male':'female').checked = true;
     
     document.getElementById("message").innerHTML = "<div class='alert alert-warning' role='alert'>Update Record [ID: "+records[0][0]+"]</div>";
   }
