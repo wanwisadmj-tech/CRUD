@@ -6,12 +6,12 @@ function doGet(request) {
 
 function globalVariables(){ 
   var varArray = {
-    spreadsheetId   : 'xxxxx',                                         //** ระบุ sheetID 
-    dataRage        : 'xxxxx!xx:xx',                                    //** ระบุ ชื่อชีต!cellเริ่มต้น: คอลัมภ์สุดท้าย 
-    idRange         : 'xxxxx!xx:xx',                                    //** ระบุ ชื่อชีต!cellเริ่มต้น: คอลัมภ์แรก 
-    lastCol         : 'xx',                                            //** ระบุคอลัมภ์สุดท้าย 
-    insertRange     : 'xxxxx!xx:xx',                                   //** ระบุ ชื่อชีต!cellเริ่มต้น: cellสุดท้าย 
-    sheetID         : '0'                                             //** นับคอลัมภ์แรกเป้น 0 !!! 
+    spreadsheetId   : 'xxxxx',            //** ระบุ sheetID 
+    dataRage        : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์สุดท้าย 
+    idRange         : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์แรก 
+    lastCol         : 'xx',               //** ระบุคอลัมภ์สุดท้าย 
+    insertRange     : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้น: cellสุดท้าย 
+    sheetID         : '0'                 //** นับคอลัมภ์แรกเป้น 0 !!! 
   };
   return varArray;
 }
@@ -32,16 +32,14 @@ function getFormValues(formObject){
 /* ADD OR REMOVE VARIABLES ACCORDING TO YOUR FORM*/
   if(formObject.RecId && checkID(formObject.RecId)){
     var values = [[formObject.RecId.toString(),         // กำหนดให้เป็น ID อัตโนมัติ
-                  formObject.ตัวแปรที่ 1,
-                  formObject.ตัวแปรที่ 2,
-                  formObject.ตัวแปรที่ 3,
-                  formObject.ตัวแปรที่ 4 ]];
+                  formObject.valA,
+                  formObject.valB,
+                  formObject.valC ]];
   }else{
     var values = [[new Date().getTime().toString(),
-                  formObject.ตัวแปรที่ 1,
-                  formObject.ตัวแปรที่ 2,
-                  formObject.ตัวแปรที่ 3,
-                  formObject.ตัวแปรที่ 4 ]];
+                  formObject.valA,
+                  formObject.valB,
+                  formObject.valC ]];
   }
   return values;
 }
