@@ -10,7 +10,7 @@ function globalVariables(){
     dataRage        : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์สุดท้าย 
     idRange         : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์แรก 
     lastCol         : 'xx',               //** ระบุคอลัมภ์สุดท้าย 
-    insertRange     : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้น: cellสุดท้าย 
+    insertRange     : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cell แรก: cellสุดท้าย 
     sheetID         : '0'                 //** นับคอลัมภ์แรกเป้น 0 !!! 
   };
   return varArray;
