@@ -44,9 +44,9 @@
                       "<th scope='col'>ลบ</th>"+
                       "<th scope='col'>แก้ไข</th>"+
                       "<th scope='col'>ไอดี</th>"+
-                      "<th scope='col'>เลขประจำตัว</th>"+
-                      "<th scope='col'>ชื่อ สกุล</th>"+
-                      "<th scope='col'>เพศ</th>"+
+                      "<th scope='col'>หัวตารางตัวแปร1</th>"+
+                      "<th scope='col'>หัวตารางตัวแปร2</th>"+
+                      "<th scope='col'>หัวตารางตัวแปร3</th>"+
                     "</tr>"+
                   "</thead>";
       for(var i=0; i<dataArray.length; i++) {
@@ -87,8 +87,10 @@
   //POPULATE FORM
   function populateForm(records){
     document.getElementById('RecId').value = records[0][0];
-    document.getElementById('valA').value = records[0][0];                       
-    document.getElementById('valB').value = records[0][0];
+    document.getElementById('ชื่อตัวแปร1').value = records[0][0];                       
+    document.getElementById('ชื่อตัวแปร2').value = records[0][0];
+    document.getElementById('ชื่อตัวแปร3').value = records[0][0];                       
+    document.getElementById('ชื่อตัวแปร4').value = records[0][0];
     document.getElementById(records[0][0] =='ชาย'? 'male':'female').checked = true;
     document.getElementById("message").innerHTML = "<div class='alert alert-warning' role='alert'>Update Record [ID: "+records[0][0]+"]</div>";
   }
