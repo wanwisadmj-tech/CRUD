@@ -10,7 +10,7 @@ function globalVariables(){
     dataRage        : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์สุดท้าย 
     idRange         : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellเริ่มต้นที่บันทึกข้อมูล: คอลัมภ์แรก 
     lastCol         : 'xx',               //** ระบุคอลัมภ์สุดท้าย 
-    insertRange     : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cell แรก: cellสุดท้าย 
+    insertRange     : 'xxxxx!xx:xx',      //** ระบุ ชื่อชีต!cellแรกใน google sheet : cellแรกของคอลัมภ์สุดท้ายที่ใช้งานใน google sheet
     sheetID         : '0'                 //** นับคอลัมภ์แรกเป้น 0 !!! 
   };
   return varArray;
@@ -32,14 +32,16 @@ function getFormValues(formObject){
 /* ADD OR REMOVE VARIABLES ACCORDING TO YOUR FORM*/
   if(formObject.RecId && checkID(formObject.RecId)){
     var values = [[formObject.RecId.toString(),         // กำหนดให้เป็น ID อัตโนมัติ
-                  formObject.valA,
-                  formObject.valB,
-                  formObject.valC ]];
+                  formObject.ชื่อตัวแปรที่1,
+                  formObject.ชื่อตัวแปรที่2,
+                  formObject.ชื่อตัวแปรที่3,
+                  formObject.ชื่อตัวแปรสุดท้าย ]];
   }else{
     var values = [[new Date().getTime().toString(),
-                  formObject.valA,
-                  formObject.valB,
-                  formObject.valC ]];
+                   formObject.ชื่อตัวแปรที่1,
+                  formObject.ชื่อตัวแปรที่2,
+                  formObject.ชื่อตัวแปรที่3,
+                  formObject.ชื่อตัวแปรสุดท้าย ]];
   }
   return values;
 }
