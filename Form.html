@@ -2,32 +2,44 @@
 <!-- ## This is included in the Index.html page using "include('Form')" function -->
 
 <form id="myForm" class="p-2 border border-light rounded bg-light" onsubmit="handleFormSubmit(this)"> <!-- Call JavaScript function "handleFormSubmit" -->
-    <p class="h4 mb-4 text-center">ฟอร์มกรอกข้อมูล</p>
+    <p class="h4 mb-4 text-center">ชื่อระบบงาน</p>
     <div id="message"></div>
     <input type="text" id="RecId" name="RecId" value="" style="display: none">
 	
-  <div class="form-group">
-		<label for="stuid" >เลขประจำตัว</label>
-		<input type="text" class="form-control" id="stuid" name="stuid" placeholder="เลขประจำตัว" required> <br>
+ <-- รูปแบบการใช้คำสั่งในการสร้างกล่องรับข้อมูลแบบ input text ในที่นี้สร้างกล่องรับข้อมูล ชื่อ-สกุล --> 
     <label for="name" >ชื่อ สกุล</label>
-		<input type="text" class="form-control" id="name" name="name" placeholder="ชื่อ สกุล" required>
-	</div>
-	
+		<input type="text"  id="name" name="name" placeholder="ข้อความที่ต้องการแสดงในกล่องข้อความตั้งต้น" >
+
+<-- รูปแบบการใช้คำสั่งในการสร้างoption group แบบ dropdown list --> 
+    
+	<label for="อาชีพ"> อาชีพ </label>
+        <select  name="occ" id="occ">
+             <option value="นักเรียน"> นักเรียน </option>
+             <option value="รับจ้าง"> รับจ้าง </option>
+			<option value="รับราชการ"> รับราชการ </option>
+        </select>
+
+	 
+<-- รูปแบบการใช้คำสั่งในการสร้าง option group แบบ radio --> 	
   <div class="form-row">
 		<div class="form-group col-md-6">
-			<p>เพศ</p>
+			<p>สถานภาพ</p>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="gender" id="male" value="ชาย">
-				<label class="form-check-label" for="male">ชาย</label>
+				<input class="form-check-input" type="radio" name="status" id="single" value="โสด">
+				<label class="form-check-label" for="single">โสด</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="gender" id="female" value="หญิง">
-				<label class="form-check-label" for="female">หญิง</label>
+				<input class="form-check-input" type="radio" name="status" id="married" value="สมรส">
+				<label class="form-check-label" for="married">สมรส </label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="status" id="divorce" value="หย่าร้าง">
+				<label class="form-check-label" for="divorce"> หย่าร้าง </label>
 			</div>
 		</div>
 	</div>
 
-<!-- Create submit button -->	   
+<!-- รูปแบบคำสั่งการสร้างปุ่มบันทึกข้อมูล (submit) -->	   
 	<button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
     <input class="btn btn-secondary" type="reset" value="รีเซ็ต">
 </form>
